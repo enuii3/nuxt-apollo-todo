@@ -10,7 +10,7 @@ https://zenn.dev/atoz/articles/36dc9ab24c4db2
 - <script>
 + <script lang="ts"> // typescript対応
 
-- export default {}
+- export default Vue.extend({})
 + export default defineComponent({}) // typescript対応
 </script>
 ```
