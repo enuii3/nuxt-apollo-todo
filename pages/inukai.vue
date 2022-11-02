@@ -1,5 +1,5 @@
 <template>
-  <div>いぬかい</div>
+  <div>いぬかい修正</div>
 </template>
 
 <script>
