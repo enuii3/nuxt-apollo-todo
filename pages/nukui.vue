@@ -1,5 +1,5 @@
 <template>
-  <div>nukui</div>
+  <div>ファイル名をname.vueからnukui.vueに変更</div>
 </template>
 
 <script>
