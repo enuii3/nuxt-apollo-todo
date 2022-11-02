@@ -86,6 +86,11 @@ export default {
           title: 'Inukai',
           to: '/Inukai',
         },
+        {
+          icon: 'mdi-account-cowboy-hat',
+          title: 'Nukui',
+          to: '/nukui',
+        },
       ],
       miniVariant: false,
       right: true,
