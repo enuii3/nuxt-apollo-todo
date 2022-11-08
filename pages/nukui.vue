@@ -1,9 +1,14 @@
 <template>
-  <div>ファイル名をname.vueからnukui.vueに変更</div>
+  <Home />
 </template>
 
-<script>
-export default {
-  name: 'NukuiComponent',
-}
+<script lang="ts">
+import Home from '../components/nukui/organisms/Home.vue'
+
+export default defineComponent({
+  name: 'HomeComponent',
+  components: {
+    Home,
+  },
+})
 </script>
