@@ -1,9 +1,14 @@
+<script lang="ts">
+import Home from '@/components/inukai/Home.vue'
+
+export default defineComponent({
+  name: 'InukaiPage',
+  components: { Home },
+})
+</script>
+
 <template>
-  <div>いぬかい修正</div>
+  <div><Home /></div>
 </template>
 
-<script>
-export default {
-  name: 'InukaiPage',
-}
-</script>
+<style scoped></style>
