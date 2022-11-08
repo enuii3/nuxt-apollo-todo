@@ -14,7 +14,6 @@
             :class="{ 'text-decoration-line-through': task.done }"
             >{{ task.title }}</v-list-item-title
           >
-          <v-input></v-input>
         </v-list-item-content>
 
         <v-list-item-icon>
@@ -43,18 +42,12 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup(props, { emit }) {
     const doneTask = (id: number) => {
-      const task = props.tasks.find((t) => t.id === id)
-      if (task !== undefined) {
-        task.done = !task.done
-      }
+      emit('done', id)
     }
     const deleteTask = (id: number) => {
-      const tasks = props.tasks
-      tasks.forEach((task, index) => {
-        if (task.id === id) tasks.splice(index, 1)
-      })
+      emit('delete', id)
     }
     return { doneTask, deleteTask }
   },

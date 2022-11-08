@@ -13,19 +13,12 @@
 </template>
 
 <script setup lang="ts">
-import { Task } from '~~/components/nukui/molecules/TodoList.vue'
-const emit = defineEmits(['addTaskParent'])
-
 const newTaskTitle = ref('')
+
+const emit = defineEmits<{ (e: 'add', newTaskTitle: string): void }>()
+
 const addTask = () => {
-  if (newTaskTitle.value.length > 0) {
-    const newTask: Task = {
-      id: Date.now(),
-      title: newTaskTitle.value,
-      done: false,
-    }
-    emit('addTaskParent', newTask)
-    newTaskTitle.value = ''
-  }
+  emit('add', newTaskTitle.value)
+  newTaskTitle.value = ''
 }
 </script>

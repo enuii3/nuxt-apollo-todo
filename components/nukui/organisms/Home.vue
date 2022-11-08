@@ -1,15 +1,15 @@
 <template>
   <div>
     <p>AddTodo</p>
-    <TodoAdd @addTaskParent="addNewTask" />
+    <TodoAdd @add="addTask" />
 
     <p>TodoList</p>
-    <TodoList :tasks="tasks" />
+    <TodoList :tasks="tasks" @done="doneTask" @delete="deleteTask" />
   </div>
 </template>
 
 <script lang="ts">
-import TodoList from '~~/components/nukui/molecules/TodoList.vue'
+import TodoList, { Task } from '~~/components/nukui/molecules/TodoList.vue'
 import TodoAdd from '~~/components/nukui/molecules/TodoAdd.vue'
 
 export default defineComponent({
@@ -28,10 +28,29 @@ export default defineComponent({
         done: false,
       },
     ])
-    const addNewTask = (newTask) => {
-      tasks.value.push(newTask)
+
+    const addTask = (newTaskTitle: string) => {
+      if (newTaskTitle.length > 0) {
+        const newTask: Task = {
+          id: Date.now(),
+          title: newTaskTitle,
+          done: false,
+        }
+        tasks.value.push(newTask)
+      }
     }
-    return { tasks, addNewTask }
+    const doneTask = (id: number) => {
+      const task = tasks.value.find((t) => t.id === id)
+      if (task !== undefined) {
+        task.done = !task.done
+      }
+    }
+    const deleteTask = (id: number) => {
+      tasks.value.forEach((task, index) => {
+        if (task.id === id) tasks.value.splice(index, 1)
+      })
+    }
+    return { tasks, addTask, doneTask, deleteTask }
   },
 })
 </script>
