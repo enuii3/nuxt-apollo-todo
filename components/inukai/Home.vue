@@ -8,8 +8,6 @@
 
 <script lang="ts">
 // 作成したコンポーネント、型定義を追加
-import { Ref } from 'vue'
-
 import TodoList, { Task } from '@/components/inukai/TodoList.vue'
 import TodoAdd from '@/components/inukai/TodoAdd.vue'
 
@@ -20,7 +18,7 @@ export default defineComponent({
 
   setup(_props, _context) {
     // 型定義を追加
-    const tasks: Ref<Task[]> = ref([
+    const tasks = ref<Task[]>([
       {
         id: 1,
         title: '起きる',
