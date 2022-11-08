@@ -27,29 +27,27 @@
   </v-list>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 export interface Task {
   id: number
   title: string
   done: boolean
 }
 
-export default defineComponent({
-  name: 'TaskList',
-  props: {
-    tasks: {
-      type: Array as () => Task[],
-      required: true,
-    },
-  },
-  setup(props, { emit }) {
-    const doneTask = (id: number) => {
-      emit('done', id)
-    }
-    const deleteTask = (id: number) => {
-      emit('delete', id)
-    }
-    return { doneTask, deleteTask }
-  },
-})
+defineProps<{
+  tasks?: Task[]
+}>()
+
+const emit = defineEmits<{
+  (e: 'done', id: number): void
+  (e: 'delete', id: number): void
+}>()
+
+const doneTask = (id: number) => {
+  emit('done', id)
+}
+
+const deleteTask = (id: number) => {
+  emit('delete', id)
+}
 </script>
