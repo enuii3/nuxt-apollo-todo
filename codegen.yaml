@@ -1,0 +1,16 @@
+schema: http://localhost:8000/graphql
+documents:
+  - './**/*.gql'
+  - '!./node_modules'
+
+generates:
+  ./graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typed-document-node
+    config:
+      # https://www.graphql-code-generator.com/plugins/typescript/typescript-operations
+      enumsAsConst: true
+      skipTypename: true # 型定義に__typenameが含まれなくなる(実際のオブジェクトには存在する)
+      dedupeOperationSuffix: true
