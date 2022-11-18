@@ -1,16 +1,20 @@
 <template>
   <div>
-    <p>AddTodo</p>
+    <h2>AddTodo</h2>
     <TodoAdd @add="addTask" />
-
-    <p>TodoList</p>
+    <br />
+    <h2>TodoList</h2>
     <TodoList :tasks="tasks" @done="doneTask" @delete="deleteTask" />
+    <br />
+    <h2>Launch List</h2>
+    <Launches />
   </div>
 </template>
 
 <script setup lang="ts">
 import TodoList, { Task } from '~~/components/nukui/molecules/TodoList.vue'
 import TodoAdd from '~~/components/nukui/molecules/TodoAdd.vue'
+import Launches from '~~/components/nukui/atoms/launches/Launches.vue'
 
 const tasks = ref([
   {
