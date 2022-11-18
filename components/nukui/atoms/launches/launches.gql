@@ -1,0 +1,53 @@
+query LaunchList($after: String) {
+  launches(after: $after) {
+    cursor
+    hasMore
+    launches {
+      ...launchFragment
+      # id
+      # isBooked
+      # rocket {
+      #   id
+      #   name
+      # }
+      # mission {
+      #   name
+      #   missionPatch
+      # }
+    }
+  }
+}
+
+query LaunchDetails($launchId: ID!) {
+  launch(id: $launchId) {
+    id
+    site
+    isBooked
+    rocket {
+      id
+      name
+      type
+    }
+    mission {
+      name
+      missionPatch
+    }
+  }
+}
+
+fragment LaunchFragment on Launch {
+  id
+  isBooked
+  rocket {
+    id
+    name
+  }
+  mission {
+    name
+    missionPatch
+  }
+}
+
+mutation login($email: String!) {
+  login(email: $email)
+}
