@@ -3,18 +3,14 @@
     <h2>AddTodo</h2>
     <TodoAdd @add="addTask" />
     <br />
-    <h2>TodoList</h2>
-    <TodoList :tasks="tasks" @done="doneTask" @delete="deleteTask" />
-    <br />
-    <h2>Launch List</h2>
-    <Launches />
+    <TodoStatusBar :tasks="tasks" @change-task="changeTask" />
   </div>
 </template>
 
 <script setup lang="ts">
-import TodoList, { Task } from '~~/components/nukui/molecules/TodoList.vue'
+import TodoStatusBar from '../molecules/TodoStatusBar.vue'
+import { Task } from '~~/components/nukui/molecules/TodoList.vue'
 import TodoAdd from '~~/components/nukui/molecules/TodoAdd.vue'
-import Launches from '~~/components/nukui/atoms/launches/Launches.vue'
 
 const tasks = ref([
   {
@@ -27,6 +23,21 @@ const tasks = ref([
     title: '着替える',
     done: false,
   },
+  {
+    id: 3,
+    title: '歯を磨く',
+    done: true,
+  },
+  {
+    id: 4,
+    title: '朝食を食べる',
+    done: false,
+  },
+  {
+    id: 5,
+    title: '顔を洗う',
+    done: true,
+  },
 ])
 const addTask = (newTaskTitle: string) => {
   if (newTaskTitle.length > 0) {
@@ -38,16 +49,12 @@ const addTask = (newTaskTitle: string) => {
     tasks.value.push(newTask)
   }
 }
-const doneTask = (id: number) => {
+
+const changeTask = (id: number) => {
   const task = tasks.value.find((t) => t.id === id)
   if (task !== undefined) {
     task.done = !task.done
   }
-}
-const deleteTask = (id: number) => {
-  tasks.value.forEach((task, index) => {
-    if (task.id === id) tasks.value.splice(index, 1)
-  })
 }
 </script>
 
