@@ -1,5 +1,7 @@
 {
-  "include": ["./jest-setup.ts"],
   "extends": "./.nuxt/tsconfig.json",
+  "vueCompilerOptions": {
+    "target": 2.7
+  },
   "exclude": ["node_modules", "dist"]
 }
