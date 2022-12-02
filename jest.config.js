@@ -16,5 +16,6 @@ module.exports = {
     '<rootDir>/pages/**/*.vue',
   ],
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/test/jest-setup.ts'],
+  // setupFilesAfterEnv: ['<rootDir>/test/jest-setup.ts'],
+  setupFiles: ['./test/setup.js'],
 }
